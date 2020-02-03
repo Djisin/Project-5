@@ -163,7 +163,7 @@ async function submitFormData(submit){
     localStorage.clear();
     localStorage.setItem('orderId',responseId.orderId)
     document.getElementById("customer-info").reset();
-    window.location.replace("/order-confirmation.html");
+    window.location.replace("order-confirmation.html");
   }
   catch (errorResponse) {
     console.log(errorResponse.error) 
