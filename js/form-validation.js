@@ -8,27 +8,27 @@ function formValidation() {
   
   // To check empty form fields.
   if (firstname.value.length == 0){
-    document.getElementById('error-info').innerText = "* All fields are mandatory! *";
+    document.getElementById('error-info').innerText = "* Correct first name is required *";
     firstname.focus();
     return false;
   }
   if (lastname.value.length == 0){
-    document.getElementById('error-info').innerText = "* All fields are mandatory! *";
+    document.getElementById('error-info').innerText = "* Correct last name is required *";
     lastname.focus();
     return false;
   }
   if (email.value.length == 0){
-    document.getElementById('error-info').innerText = "* All fields are mandatory! *";
+    document.getElementById('error-info').innerText = "* Correct email is required *";
     email.focus();
     return false;
   }
   if (city.value.length == 0){
-    document.getElementById('error-info').innerText = "* All fields are mandatory! *";
+    document.getElementById('error-info').innerText = "* Correct city name is required *";
     city.focus();
     return false;
   }
   if (address.value.length == 0){
-    document.getElementById('error-info').innerText = "* All fields are mandatory! *";
+    document.getElementById('error-info').innerText = "* Correct address is required *";
     address.focus();
     return false;
   }
@@ -49,7 +49,7 @@ function formValidation() {
 }
 // Function that checks whether input text is an alphabetic character or not.
 function inputAlphabet(inputtext, alertMsg) {
-  let alphaExp = /^[A-Za-z]*$/;
+  let alphaExp = /^(?=^[A-Za-z]+\s?[A-Za-z]+\s?[A-Za-z]+$).{3,30}$/;
   if (inputtext.value.match(alphaExp)) {
     return true;
   } else {
