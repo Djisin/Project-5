@@ -1,82 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Miloš Radivojević - Project 5</title>
-		
-	    <meta charset="utf-8">
-	    <meta name="language" content="en-us">
-	    <meta name="author" content="Miloš Radivojević">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="Description" content="OpenClassrooms project 5 ORINOCO">
-        
-        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-        <link href="css/style.css" type="text/css" rel="stylesheet">
-        <link href="img/favicon.ico" type="image/x-icon" rel="shourtcut icon">
-        
-        <script async src="js/cart.js"></script>
-        <script async src="js/form-validation.js"></script>
-    </head>
-    <body>
-        <header>
-            <h1>CART</h1>
-        </header>
-        <section>
-            <form action="list-view.html" class="inline">
-                <button type='submit' class="btn btn-info">To the product list</button>
-            </form> 
+
+<head>
+    <title>Miloš Radivojević - Project 5</title>
+
+    <meta charset="utf-8">
+    <meta name="language" content="en-us">
+    <meta name="author" content="Miloš Radivojević">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="OpenClassrooms project 5 ORINOCO">
+
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="img/favicon.ico" type="image/x-icon" rel="shourtcut icon">
+
+    <script async src="js/cart.js"></script>
+    <script async src="js/form-validation.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>CART</h1>
+    </header>
+    <section>
+        <form action="list-view.html" class="inline">
+            <button type='submit' class="btn btn-info">To the product list</button>
+        </form>
+    </section>
+    <main id="container-cart">
+        <section class="cartItem cartItem-1" id="cart-items-header">
+            <span>Name</span>
+            <span></span>
+            <span>Varnish</span>
+            <span>Price</span>
+            <span>Amount</span>
+            <span> Total</span>
+            <span></span>
         </section>
-        <main id="container-cart">
-            <section class="cartItem cartItem-1" id="cart-items-header">
-                <span>Name</span>
-                <span></span>
-                <span>Varnish</span>
-                <span>Price</span>
-                <span>Amount</span>
-                <span> Total</span>
-                <span></span>
-            </section>
-            <section id="cart-items-list">
-                <!-- Loaded from js-->
-            </section>
-            <section class="cartItem cartItem-1" id="cart-final-price">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span id="total-cart-value">Total cart value:</span>
-                <span class="" id="total-payment">$0</span>
-                <span></span>
-            </section>
-            <section id="customer-info-section">
-                <h3>Customer information</h3>
-                <span id="error-info"></span>
-                <form id="customer-info">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <label for="firstName">First Name</label>
-                            <input id="firstName" type="text" class="form-control" placeholder="First name" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="lastName">Last Name</label>
-                            <input id="lastName" type="text" class="form-control" placeholder="Last name" required>
-                        </div>
+        <section id="cart-items-list">
+            <!-- Loaded from js-->
+        </section>
+        <section class="cartItem cartItem-1" id="cart-final-price">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span id="total-cart-value">Total cart value:</span>
+            <span class="" id="total-payment">$0</span>
+            <span></span>
+        </section>
+        <section id="customer-info-section">
+            <h3>Customer information</h3>
+            <span id="error-info"></span>
+            <form id="customer-info">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="firstName">First Name</label>
+                        <input id="firstName" type="text" class="form-control" placeholder="First name" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="city" placeholder="City" required>
-                        </div>
+                    <div class="col-md-6">
+                        <label for="lastName">Last Name</label>
+                        <input id="lastName" type="text" class="form-control" placeholder="Last name" required>
                     </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="etc. 1234 Main St" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email" required>
                     </div>
-                    <button id="submit-order" type="submit" onclick=formValidation(); class="btn btn-primary">Submit Order</button>
-                </form>
-            </section>
-        </main>
-    </body>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="city" placeholder="City" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="etc. 1234 Main St" required>
+                </div>
+                <button id="submit-order" type="submit" onclick=formValidation(); class="btn btn-primary">Submit
+                    Order</button>
+            </form>
+        </section>
+    </main>
+</body>
+
 </html>
