@@ -1,3 +1,5 @@
+let api = 'http://localhost:3000/api/furniture';
+
 const cartItemsList = document.getElementById('cart-items-list');
 
 let request = new XMLHttpRequest();
@@ -143,7 +145,7 @@ submitButton.addEventListener('click', ($event) => {
 function makeRequest(submit) {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:3000/api/furniture' + '/order');
+    request.open('POST', api + '/order');
     request.onreadystatechange = () => {
       if (request.readyState === 4) {
         if (request.status >= 200 && request.status < 400) {
