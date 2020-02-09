@@ -31,6 +31,12 @@
             opacity: 0.7;
         }
     }
+    & i{
+        margin-top: -36px;
+        padding: 0;
+        color: white;
+        text-shadow: 1px 0px black;
+    }
     & p{
         white-space: nowrap;
         overflow: hidden;
@@ -47,10 +53,13 @@
             height: 28px;
             padding:0;
         }
-        & input {
+        & input{
             height: 28px;
             width:40px;
             align-self: right;
+        }
+        & div{
+            margin-top: 5px;
         }
     }
     & button{
@@ -61,7 +70,7 @@
             transition-duration: 1s;
         }
         &.btn-danger{
-        margin-left: 5px;
+            margin-left: 5px;
         } 
     }
 }
@@ -75,11 +84,10 @@
     padding:5px;
     height:auto;
     max-width: 80%;
-    max-height: 90%;
     margin-bottom: 20px;
     background-color: $card-bg-color;
     & h2{
-        margin-top: 0px;
+        margin-top: 10px;
         text-align: center;
         font-size: 18px;
     }
@@ -99,9 +107,12 @@
         white-space: normal;
         overflow: default;
         padding: 5px;
-        padding-top: 10px;
+        padding-top: 25px;
         text-align: justify;
         align-self: center;
+    }
+    & i {
+        display: none;
     }
     & form{
         display: flex;
@@ -119,6 +130,15 @@
             width:40px;
             align-self: right;
         }
+        & div {
+            background-color: #fff;
+            border:1px solid #aaa;
+            border-radius: 3px;
+            margin-top: -65px;
+            padding:5px;
+            position: absolute;
+            display: none;
+        }
     }
     & button{
         margin-bottom: 10px;
@@ -129,7 +149,7 @@
             transition-duration: 1s;
         }
         &.btn-danger{
-        margin-left: 5px;
+            margin-left: 5px;
         } 
     }
 }

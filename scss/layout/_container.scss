@@ -11,8 +11,15 @@ body{
     width:100%;
 }
 #index-container{
+    width: 100vw;
     & button{
         margin-top: 15px;
+    }
+    & img{
+        max-width: 420px;
+        width: 95vw;
+        margin: 0;
+        padding: 0;
     }
 }
 #main-container{
