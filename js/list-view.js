@@ -17,6 +17,9 @@ request.onload = function () {
       const picture = document.createElement('img');
       picture.setAttribute('class', 'pictures');
       picture.src = data[i].imageUrl;
+      //Additional info circle in the bottom of the picture
+      const infoCircle = document.createElement('i')
+      infoCircle.setAttribute('class', 'fas fa-question-circle')
       //Item price - separate div because of alining items
       const price = document.createElement('div');
       price.textContent = 'Price: ' + '$' + data[i].price;
@@ -72,13 +75,18 @@ request.onload = function () {
         addToCartButton.setAttribute('class', 'btn btn-primary');
       }
       //Event listener for input field, check if amount between 1 and 50, disable button ADD TO THE CART if false
+      let errorCardDiv = document.createElement('div');
       numberOfItems.addEventListener('input', () => {
         if ((numberOfItems.value < 1) || (numberOfItems.value > 50)) {
+          numberOfItems.select();
           addToCartButton.disabled = true;
           addToCartButton.classList.add('disabled');
+          errorCardDiv.innerHTML = 'Please enter number between 1-50';
+          return false;
         } else {
           addToCartButton.disabled = false;
           addToCartButton.classList.remove('disabled');
+          errorCardDiv.innerHTML = '';
         }
       });
       //Event listener for ADD TO THE CART button
@@ -125,6 +133,12 @@ request.onload = function () {
           addToCartButtonDivOnTop.setAttribute('class', 'btn btn-primary');
           removeFromCartButtonDivOnTop = document.getElementsByClassName('btn btn-danger')[0];
         }
+        //Check if error message is displayed, if it is, display the message in divOnTop as well
+        if (errorCardDiv.innerText != '') {
+          cardOnTop.getElementsByTagName('form')[0].getElementsByTagName('div')[0].style.display = 'block';
+        } else {
+          cardOnTop.getElementsByTagName('form')[0].getElementsByTagName('div')[0].style.display = 'none';
+        }
         //Function for ADD TO THE CART button in divOnTop
         function divOnTopButtonAddToTheCart() {
           addToCartButtonDivOnTop.addEventListener('click', () => {
@@ -149,7 +163,7 @@ request.onload = function () {
           //Check how many buttons are present because variable addToCartButtonDivOnTop needs updating
           if (cardOnTopButtonDiv.children.length === 2) {
             addToCartButtonDivOnTop = cardOnTopButtonDiv.getElementsByClassName('btn btn-success disabled')[0]
-            divOnTopButtonAddToTheCart() //Since variable was updated, event listener needs updating
+            divOnTopButtonAddToTheCart(); //Since variable was updated, event listener needs updating
           }
           addToCartButtonDivOnTop.setAttribute('class', 'btn btn-primary');
           addToCartButtonDivOnTop.textContent = 'Add to the Cart';
@@ -178,21 +192,29 @@ request.onload = function () {
           numberOfItems.value = numberOfItemsDivOnTop.value;
           //Check if input amount is between 1 and 50, disable ADD TO CART if false
           if ((numberOfItemsDivOnTop.value < 1) || (numberOfItemsDivOnTop.value > 50)) {
+            numberOfItemsDivOnTop.select();
             addToCartButtonDivOnTop.disabled = true;
             addToCartButton.disabled = true;
             addToCartButtonDivOnTop.classList.add('disabled');
+            errorCardDiv.innerHTML = 'Please enter number between 1-50';
+            cardOnTop.getElementsByTagName('form')[0].getElementsByTagName('div')[0].innerHTML = 'Please enter number between 1-50';
+            cardOnTop.getElementsByTagName('form')[0].getElementsByTagName('div')[0].style.display = 'block';
+            return false;
           } else {
             addToCartButtonDivOnTop.disabled = false;
             addToCartButton.disabled = false;
             addToCartButtonDivOnTop.classList.remove('disabled');
+            errorCardDiv.innerHTML = '';
+            cardOnTop.getElementsByTagName('form')[0].getElementsByTagName('div')[0].innerHTML = '';
+            cardOnTop.getElementsByTagName('form')[0].getElementsByTagName('div')[0].style.display = 'none';
           }
         });
       });
       //Buttons for the cards END
-      //Arrange everyhting on the card
+      //Put everything into place
       containee.appendChild(card);
-      card.append(itemName, picture, p, price, cardForm, addToCartButtonDiv);
-      cardForm.append(varnishLabel, varnish, numberOfItems);
+      card.append(itemName, picture, infoCircle, p, price, cardForm, addToCartButtonDiv);
+      cardForm.append(varnishLabel, varnish, numberOfItems, errorCardDiv);
     }
   } else {
     alert('Problem with connection to the API, please contact support');
