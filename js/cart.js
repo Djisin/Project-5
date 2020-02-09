@@ -135,7 +135,7 @@ submitButton.addEventListener('click', ($event) => {
     }
     submitFormData(submit);
   } else {
-    document.getElementById('error-info').innerText = 'Your cart is empty!'
+    document.getElementById('error-info').innerText = 'Your cart is empty!';
     return false;
   }
 });
@@ -143,7 +143,7 @@ submitButton.addEventListener('click', ($event) => {
 function makeRequest(submit) {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
-    request.open('POST', api + '/order');
+    request.open('POST', 'http://localhost:3000/api/furniture' + '/order');
     request.onreadystatechange = () => {
       if (request.readyState === 4) {
         if (request.status >= 200 && request.status < 400) {
@@ -168,6 +168,6 @@ async function submitFormData(submit) {
     window.location.replace("order-confirmation.html");
   }
   catch (errorResponse) {
-    alert(errorResponse.error);
+    alert(errorResponse);
   };
 }
